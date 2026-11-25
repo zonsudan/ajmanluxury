@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="/css/style.css?v=4.1">
+    <link rel="stylesheet" href="/css/style.css?v=4.2">
 </head>
 <body class="theme-3saf">
 
@@ -150,14 +150,6 @@
                     <span><%= lang === 'ar' ? 'المجموع الفرعي:' : 'Subtotal:' %></span>
                     <strong class="subtotal-amount" id="cartDrawerSubtotal">0 د.إ</strong>
                 </div>
-                
-                <div class="cart-bnpl-notice">
-                    <span><%= lang === 'ar' ? 'أو قسّمها على 4 دفعات بدون فوائد مع' : 'Or 4 interest-free payments with' %></span>
-                    <div class="bnpl-badges">
-                        <span class="badge-tabby">Tabby</span>
-                        <span class="badge-tamara">Tamara</span>
-                    </div>
-                </div>
 
                 <a href="/checkout?lang=<%= lang %>" class="checkout-submit-btn">
                     <span><%= lang === 'ar' ? 'إتمام الطلب الفوري' : 'Proceed to Checkout' %></span>
@@ -221,10 +213,10 @@
                     </div>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-credit-card"></i>
+                    <i class="fas fa-lock"></i>
                     <div>
-                        <strong><%= lang === 'ar' ? 'تقسيط تابي وتمارا' : 'Flexible Installments' %></strong>
-                        <p><%= lang === 'ar' ? 'قسّم فاتورتك على 4 دفعات بدون فوائد' : 'Split with Tabby & Tamara' %></p>
+                        <strong><%= lang === 'ar' ? 'دفع إلكتروني آمن' : '100% Secure Checkout' %></strong>
+                        <p><%= lang === 'ar' ? 'مدى، Apple Pay، وبطاقات الائتمان المشفرة' : 'Apple Pay, Mada & Encrypted Cards' %></p>
                     </div>
                 </div>
             </div>
@@ -257,8 +249,6 @@
                     <span class="pay-tag apple">Apple Pay</span>
                     <span class="pay-tag visa">VISA</span>
                     <span class="pay-tag mc">Mastercard</span>
-                    <span class="pay-tag tabby">Tabby</span>
-                    <span class="pay-tag tamara">Tamara</span>
                 </div>
             </div>
         </div>
