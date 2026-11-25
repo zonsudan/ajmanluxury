@@ -2782,3 +2782,274 @@ body.inner-page .product-details-page {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+/* ==========================================================================
+   COMPREHENSIVE MOBILE & MULTI-DEVICE RESPONSIVENESS (ZERO OVERFLOW GUARD)
+   ========================================================================== */
+
+html {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
+body.theme-3saf {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+
+/* Tablet & Mobile Header Rules (Below 1100px) */
+@media (max-width: 1100px) {
+  .header-center-nav {
+    display: none !important;
+  }
+  .mobile-nav-toggle {
+    display: flex !important;
+  }
+}
+
+/* Tablet (Below 900px) */
+@media (max-width: 900px) {
+  .top-support-bar {
+    font-size: 0.78rem;
+    padding: 0.4rem 0;
+  }
+  
+  .site-header-3saf {
+    top: 28px;
+    padding: 0.5rem 0;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .site-header-3saf.scrolled {
+    top: 0;
+    padding: 0.4rem 0;
+  }
+
+  .header-inner {
+    padding: 0 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .brand-logo-img {
+    height: 34px !important;
+    max-width: 155px !important;
+    width: auto;
+  }
+
+  .header-left-col {
+    gap: 0.65rem !important;
+  }
+
+  .tool-icon-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.05rem !important;
+  }
+}
+
+/* Mobile Screens (Below 600px) */
+@media (max-width: 600px) {
+  .top-support-bar {
+    padding: 0.3rem 0;
+    font-size: 0.7rem;
+  }
+
+  .support-email a {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .site-header-3saf {
+    top: 24px;
+    padding: 0.4rem 0;
+  }
+
+  .site-header-3saf.scrolled {
+    top: 0;
+  }
+
+  .header-inner {
+    padding: 0 0.75rem !important;
+  }
+
+  .header-right-col {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .brand-logo-img {
+    height: 28px !important;
+    max-width: 125px !important;
+    width: auto;
+  }
+
+  .header-left-col {
+    gap: 0.45rem !important;
+    flex-shrink: 0;
+  }
+
+  /* Hide account icon on mobile top bar - already in drawer & footer */
+  .header-account-btn {
+    display: none !important;
+  }
+
+  .tool-icon-btn {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 0.95rem !important;
+  }
+
+  .mobile-nav-toggle {
+    width: 22px !important;
+    gap: 4px !important;
+  }
+
+  .mobile-nav-toggle span {
+    height: 2px !important;
+  }
+
+  /* Container & Section Width Clamps */
+  .container,
+  .container-fluid {
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-video-fullwidth,
+  .brush-categories-section,
+  .collection-section,
+  .bundles-section,
+  .golden-guarantee-section,
+  .nfc-smart-section,
+  .site-footer-3saf {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3saf Arched Alcove Cards on Mobile */
+  .card-arch-alcove {
+    height: 320px !important;
+    border-radius: 110px 110px 0 0 !important;
+    padding: 2rem 1rem 1.5rem 1rem !important;
+  }
+
+  /* Trio Selector on Mobile: Smooth Horizontal Carousel with zero overflow */
+  .trio-perfumes-selector {
+    display: flex !important;
+    overflow-x: auto !important;
+    gap: 0.5rem !important;
+    padding: 0.3rem 0.1rem 0.6rem 0.1rem !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
+    max-width: 100% !important;
+  }
+
+  .trio-select-tile {
+    flex: 0 0 74px !important;
+    min-width: 74px !important;
+    padding: 0.5rem 0.2rem !important;
+  }
+
+  .tile-bottle-img {
+    width: 42px !important;
+    height: 52px !important;
+  }
+
+  .tile-perfume-name {
+    font-size: 0.68rem !important;
+  }
+
+  .trio-tray-container {
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  .trio-slots-tray {
+    gap: 0.35rem !important;
+  }
+
+  .trio-tray-slot {
+    height: 68px !important;
+  }
+
+  .slot-empty {
+    font-size: 0.68rem !important;
+  }
+
+  .slot-filled-card img {
+    max-width: 40% !important;
+  }
+
+  .slot-filled-name {
+    font-size: 0.65rem !important;
+  }
+
+  .current-bundle-price {
+    font-size: 1.4rem !important;
+  }
+
+  .bundle-actions-group {
+    grid-template-columns: 1fr !important;
+    gap: 0.6rem !important;
+  }
+
+  .card-arch-alcove.royal-arch {
+    height: 210px !important;
+    border-radius: 90px 90px 0 0 !important;
+  }
+
+  .royal-included-chips {
+    gap: 0.35rem !important;
+  }
+
+  .inc-chip {
+    font-size: 0.7rem !important;
+    padding: 0.2rem 0.45rem !important;
+  }
+
+  /* Product Details Page on Mobile */
+  .detail-arch {
+    height: 320px !important;
+    border-radius: 100px 100px 0 0 !important;
+  }
+
+  .product-tier-selector-box {
+    padding: 0.9rem !important;
+  }
+
+  .tier-card-option {
+    padding: 0.7rem 0.8rem !important;
+  }
+
+  .tier-name {
+    font-size: 0.88rem !important;
+  }
+
+  .tier-price-val {
+    font-size: 0.95rem !important;
+  }
+
+  .companion-tiles-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.45rem !important;
+  }
+}
