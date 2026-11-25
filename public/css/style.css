@@ -1748,3 +1748,6 @@ body[dir="ltr"] .card-nfc-tag {
     grid-template-columns: 1fr;
   }
 }
+.checkout-page { padding: 70px 0; }
+.checkout-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr); gap: 28px; }
+.checkout-card, .success-card { border: 1px solid var(--border-glass); border-radius: 16px; background: var(--bg-card); padding: 28px; color: var(--text-primary); }
