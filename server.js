@@ -1029,7 +1029,8 @@ app.get('/product/:id', (req, res) => {
         product: {
             ...localizeItem(product, req.lang),
             priceFils: priceToFils(product)
-        }
+        },
+        allProducts: getLocalizedProducts(req.lang)
     }));
 });
 

@@ -147,6 +147,174 @@
     </div>
 </section>
 
+
+<!-- 3.5 Exclusive Luxury Bundles (Royal 5 Box & Custom Trio Selection) -->
+<section class="bundles-section" id="luxury-bundles">
+    <div class="container">
+        <div class="section-title-wrap">
+            <span class="section-sub">${lang === 'ar' ? 'نظام الباقات والتوفير' : 'Exclusive Value Bundles'}</span>
+            <h2 class="section-main-title">${lang === 'ar' ? 'باقات عجمان لكجري الاستثنائية' : 'AJMAN LUXURY Royal Bundles'}</h2>
+            <p class="section-desc">${lang === 'ar' ? 'تسوّق بالحبة أو وفّر مع باقاتنا الحصرية: سلكشن 3 عطور باختيارك الحر، أو البوكس الملكي الشامل الـ 5 عطور كاملة.' : 'Shop individually or save with our curated bundles: Custom Trio Selection or the Complete 5-Bottle Royal Box.'}</p>
+        </div>
+
+        <div class="bundles-showcase-grid">
+
+            <!-- Card 1: Custom Trio Selection (سلكشن 3 عطور باختيارك) -->
+            <div class="bundle-luxury-card trio-card" id="trio-custom-selection">
+                <div class="bundle-top-ribbon">
+                    <span class="ribbon-badge-burgundy">${lang === 'ar' ? 'الأكثر طلباً — وفّر أكثر من 500 درهم' : 'Best Value — Save 500+ AED'}</span>
+                </div>
+
+                <div class="bundle-header-area">
+                    <span class="bundle-subtitle">${lang === 'ar' ? 'صمّم باقتك الخاصة' : 'Design Your Set'}</span>
+                    <h3 class="bundle-title">${lang === 'ar' ? 'سلكشن 3 عطور فاخرة (باختيارك)' : 'Custom Trio Fragrance Selection'}</h3>
+                    <p class="bundle-desc">${lang === 'ar' ? 'حدد أي 3 عطور من تشكيلتنا الملكية (100 مل للزجاجة) بسعر موحد مع شحن مجاني وعينات تجربة.' : 'Select any 3 full 100ml perfumes from our signature collection at a special bundle rate.'}</p>
+                </div>
+
+                <!-- Interactive Fragrance Selector -->
+                <div class="trio-builder-wrap" id="trioBuilderWrap">
+                    <div class="trio-picker-header">
+                        <div class="picker-step-info">
+                            <span class="step-badge">1</span>
+                            <span class="step-title">${lang === 'ar' ? 'انقر لتحديد 3 عطور من القائمة:' : 'Click to select 3 fragrances:'}</span>
+                        </div>
+                        <span class="trio-counter-pill" id="trioCounterPill">0 / 3 ${lang === 'ar' ? 'مختار' : 'selected'}</span>
+                    </div>
+
+                    <div class="trio-perfumes-selector">
+                        ${products.map((p) => `
+                            <button type="button" class="trio-select-tile" 
+                                    data-perfume-id="${p.id}" 
+                                    data-perfume-name="${p.name}" 
+                                    data-perfume-img="${p.image}">
+                                <div class="tile-check-icon"><i class="fas fa-check"></i></div>
+                                <div class="tile-bottle-img">
+                                    <img src="${p.image}?v=4.0" alt="${p.name}" loading="lazy">
+                                </div>
+                                <span class="tile-perfume-name">${p.name}</span>
+                                <span class="tile-perfume-vol">100 مل</span>
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <!-- Visual 3-Slots Tray -->
+                    <div class="trio-tray-container">
+                        <span class="tray-label">${lang === 'ar' ? 'باقتك المختارة:' : 'Your Selection:'}</span>
+                        <div class="trio-slots-tray">
+                            <div class="trio-tray-slot" id="trioTraySlot0" data-slot="0">
+                                <div class="slot-empty">
+                                    <i class="fas fa-plus"></i>
+                                    <span>${lang === 'ar' ? 'عطر 1' : 'Scent 1'}</span>
+                                </div>
+                            </div>
+                            <div class="trio-tray-slot" id="trioTraySlot1" data-slot="1">
+                                <div class="slot-empty">
+                                    <i class="fas fa-plus"></i>
+                                    <span>${lang === 'ar' ? 'عطر 2' : 'Scent 2'}</span>
+                                </div>
+                            </div>
+                            <div class="trio-tray-slot" id="trioTraySlot2" data-slot="2">
+                                <div class="slot-empty">
+                                    <i class="fas fa-plus"></i>
+                                    <span>${lang === 'ar' ? 'عطر 3' : 'Scent 3'}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing & Perks -->
+                    <div class="bundle-price-box">
+                        <div class="price-figures">
+                            <span class="old-bundle-price">1,500 د.إ</span>
+                            <span class="current-bundle-price">990 د.إ</span>
+                        </div>
+                        <div class="bundle-perks-list">
+                            <span><i class="fas fa-truck-fast"></i> ${lang === 'ar' ? 'شحن مجاني وسريع' : 'Free Express Delivery'}</span>
+                            <span><i class="fas fa-shield-halved"></i> ${lang === 'ar' ? 'عينات تجربة مجانية وضمان كامل' : 'Free Testers & Guarantee'}</span>
+                        </div>
+                    </div>
+
+                    <!-- Trio CTAs -->
+                    <div class="bundle-actions-group">
+                        <button type="button" class="btn-whatsapp-bundle" id="trioOrderWhatsappBtn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>${lang === 'ar' ? 'اطلب باقة الـ 3 عطور عبر واتساب' : 'Order Trio via WhatsApp'}</span>
+                        </button>
+                        <button type="button" class="btn-cart-bundle" id="trioAddToCartBtn">
+                            <i class="fas fa-bag-shopping"></i>
+                            <span>${lang === 'ar' ? 'أضف الباقة إلى السلة' : 'Add Trio to Bag'}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: The Royal 5-in-1 Box (البوكس الملكي الشامل الـ 5 عطور كاملة) -->
+            <div class="bundle-luxury-card royal-card" id="royal-5-box">
+                <div class="bundle-top-ribbon">
+                    <span class="ribbon-badge-gold">${lang === 'ar' ? 'البوكس المتكامل — وفّر 1,000 درهم' : 'The Royal Set — Save 1,000 AED'}</span>
+                </div>
+
+                <div class="bundle-header-area">
+                    <span class="bundle-subtitle">${lang === 'ar' ? 'المجموعة الكاملة' : 'Complete Collection'}</span>
+                    <h3 class="bundle-title">${lang === 'ar' ? 'البوكس الملكي الشامل (مجموعة الـ 5 عطور)' : 'The Royal 5-in-1 Collector’s Box'}</h3>
+                    <p class="bundle-desc">${lang === 'ar' ? 'امتلك كافة إصدارات دار عجمان لكجري (5 زجاجات × 100 مل) في صندوق إهداء فاخر مع 5 عينات تجربة وشحن VIP مجاني.' : 'Acquire all 5 AJMAN LUXURY creations (5 x 100ml) in a bespoke gift box with 5 tester samples and VIP delivery.'}</p>
+                </div>
+
+                <!-- Royal Box Composite Display with 3saf Arched Alcove -->
+                <div class="royal-display-wrap">
+                    <div class="card-arch-alcove royal-arch">
+                        <span class="card-nfc-tag" title="${lang === 'ar' ? 'كافة الزجاجات مزودة بشرائح NFC الذكية' : 'All Bottles NFC Enabled'}">
+                            <i class="fa-solid fa-wifi fa-rotate-90"></i> 5x NFC
+                        </span>
+                        <img src="/images/products/royal-box-5.png?v=4.0" alt="${lang === 'ar' ? 'البوكس الملكي الشامل الـ 5 عطور' : 'Royal 5 Perfumes Box'}" class="royal-box-photo" loading="lazy">
+                        <div class="card-bottom-pill">
+                            <span class="pill-badge-black">${lang === 'ar' ? '5 عطور نيش × 100 مل' : '5 Niche Perfumes x 100ml'}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 Perfumes Included Chips -->
+                <div class="royal-included-chips">
+                    <span class="inc-chip"><i class="fas fa-check"></i> بريزدنت</span>
+                    <span class="inc-chip"><i class="fas fa-check"></i> فيرست ليدي</span>
+                    <span class="inc-chip"><i class="fas fa-check"></i> تشيرمان</span>
+                    <span class="inc-chip"><i class="fas fa-check"></i> كاونسل</span>
+                    <span class="inc-chip"><i class="fas fa-check"></i> بارليامنت</span>
+                </div>
+
+                <!-- Pricing & Perks -->
+                <div class="bundle-price-box">
+                    <div class="price-figures">
+                        <span class="old-bundle-price">2,490 د.إ</span>
+                        <span class="current-bundle-price">1,490 د.إ</span>
+                    </div>
+                    <div class="bundle-perks-list">
+                        <span><i class="fas fa-gift"></i> ${lang === 'ar' ? 'صندوق هدايا ملكي فاخر' : 'Bespoke Luxury Gift Case'}</span>
+                        <span><i class="fas fa-crown"></i> ${lang === 'ar' ? '5 عينات تجربة + شحن VIP مجاني' : '5 Tester Samples + Free VIP Shipping'}</span>
+                    </div>
+                </div>
+
+                <!-- Royal CTAs -->
+                <div class="bundle-actions-group">
+                    <button type="button" class="btn-whatsapp-bundle" id="royalWhatsappOrderBtn">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>${lang === 'ar' ? 'اطلب البوكس الملكي (5 عطور) عبر واتساب' : 'Order Royal Box on WhatsApp'}</span>
+                    </button>
+                    <button type="button" class="btn-cart-bundle" data-add-to-cart 
+                            data-product-id="royal-box-5" 
+                            data-product-name="${lang === 'ar' ? 'البوكس الملكي الشامل (5 عطور فاخرة 100 مل)' : 'The Royal 5-in-1 Collector Box'}" 
+                            data-product-price="1,490 درهم" 
+                            data-product-image="/images/products/royal-box-5.png">
+                        <i class="fas fa-bag-shopping"></i>
+                        <span>${lang === 'ar' ? 'أضف البوكس إلى السلة' : 'Add Royal Box to Bag'}</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <!-- 4. Golden Guarantee Section (3saf Experience) -->
 <section class="golden-guarantee-section" id="golden-guarantee">
     <div class="container guarantee-container">

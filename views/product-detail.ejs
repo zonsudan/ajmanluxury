@@ -54,6 +54,77 @@
                 </div>
             </div>
 
+            
+            <!-- Purchase Tier Selector: Single Bottle / Custom Trio / Royal 5-in-1 Box -->
+            <div class="product-tier-selector-box" id="productTierSelectorBox">
+                <div class="tier-box-header">
+                    <span class="tier-label-title"><i class="fas fa-layer-group"></i> ${lang === 'ar' ? 'خيارات الشراء والباقات:' : 'Select Purchase Option:'}</span>
+                </div>
+
+                <div class="tier-options-list">
+                    <!-- Option 1: Single Bottle -->
+                    <label class="tier-card-option active" data-tier="single">
+                        <input type="radio" name="purchase_tier_option" value="single" checked>
+                        <div class="tier-radio-custom"></div>
+                        <div class="tier-card-content">
+                            <div class="tier-header-line">
+                                <span class="tier-name">${lang === 'ar' ? 'زجاجة واحدة (الحبة)' : 'Single Bottle'}</span>
+                                <span class="tier-price-val">${product.price}</span>
+                            </div>
+                            <span class="tier-subtext">${product.name} (100 مل)</span>
+                        </div>
+                    </label>
+
+                    <!-- Option 2: Custom Trio Selection -->
+                    <label class="tier-card-option" data-tier="trio">
+                        <input type="radio" name="purchase_tier_option" value="trio">
+                        <div class="tier-radio-custom"></div>
+                        <div class="tier-card-content">
+                            <div class="tier-header-line">
+                                <span class="tier-name">${lang === 'ar' ? 'سلكشن 3 عطور فاخرة' : 'Custom Trio Selection'}</span>
+                                <span class="tier-badge-save">${lang === 'ar' ? 'وفّر 35%' : 'Save 35%'}</span>
+                                <span class="tier-price-val">990 د.إ</span>
+                            </div>
+                            <span class="tier-subtext">${lang === 'ar' ? 'يشمل هذا العطر + اختر عطرين إضافيين' : 'Includes this scent + 2 more of your choice'}</span>
+                        </div>
+                    </label>
+
+                    <!-- Option 3: Royal 5-in-1 Box -->
+                    <label class="tier-card-option" data-tier="royal5">
+                        <input type="radio" name="purchase_tier_option" value="royal5">
+                        <div class="tier-radio-custom"></div>
+                        <div class="tier-card-content">
+                            <div class="tier-header-line">
+                                <span class="tier-name">${lang === 'ar' ? 'البوكس الملكي (5 عطور)' : 'The Royal 5-in-1 Box'}</span>
+                                <span class="tier-badge-save gold-save">${lang === 'ar' ? 'وفّر 1,000 د.إ' : 'Save 1,000 AED'}</span>
+                                <span class="tier-price-val">1,490 د.إ</span>
+                            </div>
+                            <span class="tier-subtext">${lang === 'ar' ? 'الـ 5 عطور كاملة في صندوق إهداء ملكي فاخر' : 'All 5 full-size 100ml perfumes'}</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Trio 2-scents picker dropdown/grid (shown only when Trio is selected) -->
+                <div class="detail-trio-companion-picker" id="detailTrioCompanionPicker" style="display: none;">
+                    <div class="companion-title">
+                        <i class="fas fa-check-circle"></i>
+                        <span>${lang === 'ar' ? 'اختر عطرين إضافيين ليكتمل سلكشن الـ 3 عطور (مطلوب 2):' : 'Choose 2 additional fragrances to complete your trio:'}</span>
+                        <span class="companion-counter" id="detailCompanionCounter">0 / 2</span>
+                    </div>
+                    <div class="companion-tiles-grid">
+                        ${(typeof allProducts !== 'undefined' ? allProducts : []).filter(p => p.id !== product.id).map(p => `
+                            <button type="button" class="companion-tile" 
+                                    data-companion-id="${p.id}" 
+                                    data-companion-name="${p.name}">
+                                <div class="comp-check"><i class="fas fa-check"></i></div>
+                                <img src="${p.image}?v=4.0" alt="${p.name}">
+                                <span>${p.name}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+
             <!-- Action WhatsApp Direct & Add to Bag -->
             <div class="detail-actions-area">
                 <a href="https://wa.me/971561634196?text=${encodeURIComponent(lang === 'ar' ? `مرحباً عجمان لكجري 🦅\nأود طلب عطر: ${product.name}\nالحجم: ${product.size || '100 مل'}\nالسعر: ${product.price}\n(شامل الضريبة والشحن السريع المجاني)\nيرجى تأكيد الطلب لتزويدكم بعنوان التوصيل.` : `Hello AJMAN LUXURY 🦅\nI would like to order: ${product.name}\nSize: ${product.size || '100ml'}\nPrice: ${product.price}\n(Free express delivery included)\nPlease confirm my order.`)}" 
