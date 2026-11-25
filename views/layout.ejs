@@ -46,18 +46,86 @@
             </div>
 
             <!-- Center: Navigation Menu for the 5 Signature Perfumes Only -->
+            <!-- Center: Luxury Navigation Menu -->
             <nav class="header-center-nav">
                 <ul class="nav-links-list">
                     <li><a href="/?lang=<%= lang %>" class="active"><%= lang === 'ar' ? 'الرئيسية' : 'Home' %></a></li>
-                    <li><a href="#featured-collection"><%= lang === 'ar' ? 'العطور الخاصة' : 'Signature Scents' %></a></li>
-                    <li><a href="#product-president"><%= lang === 'ar' ? 'بريزدنت' : 'President' %></a></li>
-                    <li><a href="#product-first-lady"><%= lang === 'ar' ? 'فيرست ليدي' : 'First Lady' %></a></li>
-                    <li><a href="#product-chairman"><%= lang === 'ar' ? 'تشيرمان' : 'Chairman' %></a></li>
-                    <li><a href="#product-council"><%= lang === 'ar' ? 'كاونسل' : 'Council' %></a></li>
-                    <li><a href="#product-parliament"><%= lang === 'ar' ? 'برلمان' : 'Parliament' %></a></li>
-                    <li><a href="#nfc-smart-fragrance" class="nav-nfc-link"><i class="fa-solid fa-wifi fa-rotate-90"></i> <%= lang === 'ar' ? 'تقنية NFC' : 'Smart NFC' %></a></li>
-                    <li class="special-offer-nav"><a href="#trio-custom-selection"><i class="fas fa-layer-group"></i> <%= lang === 'ar' ? 'سلكشن 3 عطور' : 'Trio Selection' %></a></li>
-                    <li class="special-offer-nav royal-nav-link"><a href="#royal-5-box"><i class="fas fa-crown"></i> <%= lang === 'ar' ? 'البوكس الملكي (5 عطور)' : 'Royal 5 Box' %></a></li>
+                    
+                    <!-- Dropdown for the 5 Signature Perfumes -->
+                    <li class="has-dropdown">
+                        <a href="#featured-collection" class="dropdown-trigger">
+                            <span><%= lang === 'ar' ? 'العطور الخاصة' : 'Signature Scents' %></span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="nav-dropdown-menu">
+                            <a href="#product-president" class="dropdown-item">
+                                <img src="/images/products/president.png?v=4.0" alt="President" class="dropdown-thumb">
+                                <div class="dropdown-item-info">
+                                    <span class="dropdown-item-name"><%= lang === 'ar' ? 'بريزدنت' : 'President' %></span>
+                                    <span class="dropdown-item-sub"><%= lang === 'ar' ? 'عنبري خشبي مهيب' : 'Amber Woods' %></span>
+                                </div>
+                            </a>
+                            <a href="#product-first-lady" class="dropdown-item">
+                                <img src="/images/products/first-lady.png?v=4.0" alt="First Lady" class="dropdown-thumb">
+                                <div class="dropdown-item-info">
+                                    <span class="dropdown-item-name"><%= lang === 'ar' ? 'فيرست ليدي' : 'First Lady' %></span>
+                                    <span class="dropdown-item-sub"><%= lang === 'ar' ? 'زهري عنبري أنثوي' : 'Floral Amber' %></span>
+                                </div>
+                            </a>
+                            <a href="#product-chairman" class="dropdown-item">
+                                <img src="/images/products/chairman.png?v=4.0" alt="Chairman" class="dropdown-thumb">
+                                <div class="dropdown-item-info">
+                                    <span class="dropdown-item-name"><%= lang === 'ar' ? 'تشيرمان' : 'Chairman' %></span>
+                                    <span class="dropdown-item-sub"><%= lang === 'ar' ? 'أزرق عطري واثق' : 'Aromatic Woods' %></span>
+                                </div>
+                            </a>
+                            <a href="#product-council" class="dropdown-item">
+                                <img src="/images/products/council.png?v=4.0" alt="Council" class="dropdown-thumb">
+                                <div class="dropdown-item-info">
+                                    <span class="dropdown-item-name"><%= lang === 'ar' ? 'كاونسل' : 'Council' %></span>
+                                    <span class="dropdown-item-sub"><%= lang === 'ar' ? 'عود مهيب للمجالس' : 'Dignified Oud' %></span>
+                                </div>
+                            </a>
+                            <a href="#product-parliament" class="dropdown-item">
+                                <img src="/images/products/parliament.png?v=4.0" alt="Parliament" class="dropdown-thumb">
+                                <div class="dropdown-item-info">
+                                    <span class="dropdown-item-name"><%= lang === 'ar' ? 'بارليامنت' : 'Parliament' %></span>
+                                    <span class="dropdown-item-sub"><%= lang === 'ar' ? 'مسك وأزهار بيضاء' : 'White Florals & Musk' %></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-all-link">
+                                <a href="#featured-collection"><%= lang === 'ar' ? 'تصفح العطور كاملة (بالحبة)' : 'Explore All Perfumes' %> <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#trio-custom-selection" class="nav-pill-link trio-pill">
+                            <i class="fas fa-layer-group"></i>
+                            <span><%= lang === 'ar' ? 'سلكشن 3 عطور' : 'Trio Selection' %></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#royal-5-box" class="nav-pill-link royal-pill">
+                            <i class="fas fa-crown"></i>
+                            <span><%= lang === 'ar' ? 'البوكس الملكي' : 'Royal 5 Box' %></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#nfc-smart-fragrance" class="nav-nfc-link">
+                            <i class="fa-solid fa-wifi fa-rotate-90"></i>
+                            <span><%= lang === 'ar' ? 'تقنية NFC' : 'Smart NFC' %></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#golden-guarantee">
+                            <i class="fas fa-shield-halved"></i>
+                            <span><%= lang === 'ar' ? 'الضمان الذهبي' : 'Guarantee' %></span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
