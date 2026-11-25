@@ -1,38 +1,103 @@
 <%- include('layout', {
     body: `
-<section class="product-details">
+<section class="product-details-page">
     <div class="container product-details-container">
-        <div class="product-details-image ${product.tone}">
-            ${product.image ? `<img src="${product.image}" alt="${product.name}" class="product-detail-photo">` : `<span class="bottle large"></span>`}
+        <div class="product-details-image-col">
+            <div class="card-arch-alcove detail-arch">
+                <span class="card-nfc-tag" title="${lang === 'ar' ? 'مزود بشريحة NFC الذكية للأصالة' : 'NFC Smart Bottle'}">
+                    <i class="fa-solid fa-wifi fa-rotate-90"></i> NFC
+                </span>
+                <img src="${product.image}?v=4.0" alt="${product.name}" class="product-detail-photo">
+            </div>
+            <a href="/nfc/${product.id}?lang=${lang}" class="detail-nfc-live-pill">
+                <i class="fas fa-mobile-screen-button"></i>
+                <span>${lang === 'ar' ? 'جرّب تجربة مسح الـ NFC التفاعلية للزجاجة' : 'Preview Live Bottle NFC Experience'}</span>
+                <i class="fas fa-arrow-left"></i>
+            </a>
         </div>
         <div class="product-details-info">
-            <p class="eyebrow">${product.type}</p>
-            <h1>${product.name}</h1>
-            <p class="product-size">${product.size}</p>
-            <p class="product-price">${product.price}</p>
-
-            <h2>${t.description}</h2>
-            <p class="product-description">${product.description}</p>
-
-            <div class="fragrance-notes">
-                <h2>${t.fragrance}</h2>
-                <div class="notes-group">
-                    <strong>${t.topNotes}</strong>
-                    <p>${product.topNotes}</p>
+            <div class="detail-breadcrumb">
+                <a href="/?lang=${lang}">${lang === 'ar' ? 'الرئيسية' : 'Home'}</a> / 
+                <a href="/#featured-collection">${lang === 'ar' ? 'العطور الخاصة' : 'Signature Scents'}</a> / 
+                <span>${product.name}</span>
+            </div>
+            
+            <h1 class="detail-title">${product.name}</h1>
+            <p class="detail-type">${product.type} — ${product.size}</p>
+            
+            <div class="detail-rating-row">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <div class="notes-group">
-                    <strong>${t.heartNotes}</strong>
-                    <p>${product.heartNotes}</p>
-                </div>
-                <div class="notes-group">
-                    <strong>${t.baseNotes}</strong>
-                    <p>${product.baseNotes}</p>
+                <span class="rating-val">5.0</span>
+                <span class="reviews-val">(${product.reviewsCount || '1,200'} ${lang === 'ar' ? 'تقييم موثق' : 'verified reviews'})</span>
+            </div>
+
+            <div class="detail-price-box">
+                <span class="detail-price">${product.price}</span>
+                ${product.originalPrice ? `<span class="detail-old-price">${product.originalPrice}</span>` : ''}
+                <span class="vat-badge">${lang === 'ar' ? 'شامل الضريبة والشحن مجاني' : 'VAT Incl. & Free Express Shipping'}</span>
+            </div>
+
+            <!-- Tabby & Tamara Installments -->
+            <div class="detail-bnpl-card">
+                <span>${lang === 'ar' ? 'قسّم فاتورتك على 4 دفعات بدون أي فوائد مع:' : 'Split your bill into 4 interest-free payments:'}</span>
+                <div class="bnpl-tags">
+                    <span class="pay-pill tabby">Tabby</span>
+                    <span class="pay-pill tamara">Tamara</span>
                 </div>
             </div>
 
-            <h2>${t.story}</h2>
-            <p class="product-description">${product.story}</p>
-            <a href="/checkout?lang=${lang}" class="button primary" data-add-to-cart data-product-id="${product.id}" data-product-name="${product.name}" data-product-price="${product.price}" data-product-price-fils="${product.priceFils}" data-product-image="${product.image || ''}">${lang === 'ar' ? 'أضف للسلة' : 'Add to Cart'}</a>
+            <!-- Smart NFC Feature Callout -->
+            <div class="detail-smart-nfc-box">
+                <div class="nfc-icon-col">
+                    <i class="fa-solid fa-wifi fa-rotate-90"></i>
+                </div>
+                <div class="nfc-box-text">
+                    <strong>${lang === 'ar' ? 'الزجاجة الذكية — مزودة بتقنية NFC المدمجة' : 'Smart Bottle — Built-in NFC Authenticity Chip'}</strong>
+                    <p>${lang === 'ar' ? 'المس الغطاء بهاتفك في أي وقت للتحقق من الأصالة، تفعيل الإهداء المخصص، وإعادة الطلب السريع بخصم النخبة 15%.' : 'Tap the cap with your smartphone to verify authenticity, view scent secrets, or reorder with VIP 15% discount.'}</p>
+                </div>
+            </div>
+
+            <!-- Action Add to Bag -->
+            <div class="detail-actions-area">
+                <button type="button" class="btn-add-to-cart detail-add-btn" data-add-to-cart 
+                        data-product-id="${product.id}" 
+                        data-product-name="${product.name}" 
+                        data-product-price="${product.price}" 
+                        data-product-image="${product.image}">
+                    <i class="fas fa-bag-shopping"></i>
+                    <span>${lang === 'ar' ? 'أضف إلى السلة' : 'Add to Bag'}</span>
+                </button>
+            </div>
+
+            <!-- Fragrance Notes -->
+            <div class="detail-notes-section">
+                <h3>${lang === 'ar' ? 'الهرم العطري والمكونات' : 'Fragrance Notes'}</h3>
+                <div class="notes-grid-3">
+                    <div class="note-box">
+                        <strong>${lang === 'ar' ? 'الافتتاحية' : 'Top Notes'}</strong>
+                        <p>${product.topNotes || 'البرغموت، الزعفران، الورد'}</p>
+                    </div>
+                    <div class="note-box">
+                        <strong>${lang === 'ar' ? 'قلب العطر' : 'Heart Notes'}</strong>
+                        <p>${product.heartNotes || 'الياسمين الملكي، أخشاب الأرز'}</p>
+                    </div>
+                    <div class="note-box">
+                        <strong>${lang === 'ar' ? 'القاعدة' : 'Base Notes'}</strong>
+                        <p>${product.baseNotes || 'العود الإماراتي، العنبر، المسك'}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-story-section">
+                <h3>${lang === 'ar' ? 'قصة العطر' : 'The Fragrance Story'}</h3>
+                <p class="story-p">${product.story || product.description}</p>
+            </div>
         </div>
     </div>
 </section>

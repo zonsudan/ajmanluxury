@@ -155,7 +155,7 @@
     {
       "id": "council",
       "tone": "noir",
-      "image": "/images/products/council.jpeg",
+      "image": "/images/products/council.png",
       "name": {
         "ar": "كاونسل",
         "en": "Council"
@@ -196,7 +196,7 @@
     {
       "id": "first-lady",
       "tone": "rose",
-      "image": "/images/products/first-lady.jpeg",
+      "image": "/images/products/first-lady.png",
       "name": {
         "ar": "فيرست ليدي",
         "en": "First Lady"
@@ -237,7 +237,7 @@
     {
       "id": "president",
       "tone": "royal",
-      "image": "/images/products/president.jpeg",
+      "image": "/images/products/president.png",
       "name": {
         "ar": "بريزدنت",
         "en": "President"
@@ -278,7 +278,7 @@
     {
       "id": "parliament",
       "tone": "pearl",
-      "image": "/images/products/parliament.jpeg",
+      "image": "/images/products/parliament.png",
       "name": {
         "ar": "بارليامنت",
         "en": "Parliament"
@@ -319,7 +319,7 @@
     {
       "id": "chairman",
       "tone": "sapphire",
-      "image": "/images/products/chairman.jpeg",
+      "image": "/images/products/chairman.png",
       "name": {
         "ar": "تشيرمان",
         "en": "Chairman"

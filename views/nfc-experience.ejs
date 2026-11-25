@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>" dir="<%= lang === 'ar' ? 'rtl' : 'ltr' %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title><%= lang === 'ar' ? 'توثيق الأصالة الذكي NFC' : 'NFC Authenticity Pass' %> | <%= product.name %> | AJMAN LUXURY</title>
+    
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cinzel:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/style.css?v=4.1">
+    <style>
+        :root {
+            --nfc-gold: #d4af37;
+            --nfc-gold-glow: rgba(212, 175, 55, 0.4);
+            --nfc-dark: #0d0d0f;
+            --nfc-card: #151518;
+            --nfc-card-border: rgba(212, 175, 55, 0.25);
+            --nfc-burgundy: #6b0f1a;
+        }
+
+        body.nfc-page {
+            background-color: var(--nfc-dark);
+            color: #ffffff;
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(107, 15, 26, 0.35) 0%, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(212, 175, 55, 0.15) 0%, transparent 50%);
+        }
+
+        .nfc-container {
+            width: 100%;
+            max-width: 480px;
+            padding: 1.2rem 1.2rem 3rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        /* Top Nav Bar */
+        .nfc-top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nfc-back-link {
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 700;
+        }
+
+        .nfc-brand-mini img {
+            height: 28px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+        }
+
+        .nfc-lang-btn {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            text-decoration: none;
+        }
+
+        /* Verified Badge Card */
+        .nfc-verified-card {
+            background: linear-gradient(135deg, rgba(25, 25, 30, 0.95), rgba(18, 18, 22, 0.98));
+            border: 1px solid var(--nfc-card-border);
+            border-radius: 20px;
+            padding: 1.5rem 1.2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(212, 175, 55, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nfc-pulse-circle {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem auto;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.15);
+            border: 2px solid var(--nfc-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--nfc-gold);
+            position: relative;
+            animation: pulse-ring 2.2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+            70% { box-shadow: 0 0 0 16px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .verified-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .verified-title i {
+            color: #2ec4b6;
+        }
+
+        .verified-subtitle {
+            font-size: 0.85rem;
+            color: #a0a0a5;
+            margin-bottom: 0.9rem;
+        }
+
+        .nfc-serial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px dashed var(--nfc-gold);
+            padding: 0.35rem 0.9rem;
+            border-radius: 30px;
+            font-family: monospace;
+            font-size: 0.88rem;
+            color: var(--nfc-gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Bottle Stage */
+        .nfc-bottle-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 1.5rem 0 0.5rem 0;
+        }
+
+        .bottle-halo {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            top: 20%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .nfc-stage-img {
+            max-width: 200px;
+            height: auto;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.85));
+            animation: float-bottle 4s ease-in-out infinite;
+        }
+
+        @keyframes float-bottle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .nfc-perfume-headline {
+            text-align: center;
+            margin-top: 1rem;
+            z-index: 2;
+        }
+
+        .perfume-name-ar {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .perfume-name-en {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: var(--nfc-gold);
+            letter-spacing: 2px;
+            margin: 0.2rem 0 0 0;
+            text-transform: uppercase;
+        }
+
+        .perfume-conc {
+            font-size: 0.82rem;
+            color: #888890;
+            margin-top: 0.3rem;
+        }
+
+        /* Gift Message Box (If gift) */
+        .nfc-gift-card {
+            background: linear-gradient(135deg, rgba(107, 15, 26, 0.4), rgba(30, 10, 15, 0.6));
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 16px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .gift-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--nfc-gold);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .gift-body {
+            font-size: 0.95rem;
+            color: #f0e6d2;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .gift-author {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--nfc-gold);
+            font-weight: 700;
+        }
+
+        /* Olfactory Pyramid */
+        .nfc-pyramid-card {
+            background: var(--nfc-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 1.3rem;
+        }
+
+        .card-header-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--nfc-gold);
+            margin-bottom: 1.1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 0.6rem;
+        }
+
+        .pyramid-tier {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .pyramid-tier:last-child {
+            margin-bottom: 0;
+        }
+
+        .tier-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--nfc-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .tier-info strong {
+            display: block;
+            font-size: 0.9rem;
+            color: #ffffff;
+            margin-bottom: 0.15rem;
+        }
+
+        .tier-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #a0a0aa;
+            line-height: 1.4;
+        }
+
+        /* Perfumer's Tips */
+        .nfc-tips-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .tip-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 0.9rem;
+            text-align: center;
+        }
+
+        .tip-item i {
+            color: var(--nfc-gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+
+        .tip-item span {
+            font-size: 0.78rem;
+            color: #cccccc;
+            line-height: 1.3;
+            display: block;
+        }
+
+        /* Action Buttons */
+        .nfc-reorder-btn {
+            background: linear-gradient(135deg, var(--nfc-burgundy) 0%, #851322 100%);
+            color: #ffffff;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            box-shadow: 0 8px 25px rgba(107, 15, 26, 0.5);
+            transition: transform 0.2s ease;
+        }
+
+        .nfc-reorder-btn:active {
+            transform: scale(0.98);
+        }
+
+        .reorder-vip-badge {
+            background: var(--nfc-gold);
+            color: #000;
+            font-size: 0.72rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            font-weight: 900;
+        }
+
+        .nfc-support-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .nfc-support-btn i {
+            color: #25d366;
+            font-size: 1.1rem;
+        }
+
+        .nfc-footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #666670;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body class="nfc-page">
+
+    <div class="nfc-container">
+        <!-- Top Nav -->
+        <div class="nfc-top-nav">
+            <a href="/?lang=<%= lang %>" class="nfc-back-link">
+                <i class="fas fa-arrow-right"></i>
+                <span><%= lang === 'ar' ? 'المتجر الرسمي' : 'Official Store' %></span>
+            </a>
+            <div class="nfc-brand-mini">
+                <img src="/images/logo-transparent.png?v=3.9" alt="AJMAN LUXURY">
+            </div>
+            <a href="?lang=<%= lang === 'ar' ? 'en' : 'ar' %>" class="nfc-lang-btn">
+                <%= lang === 'ar' ? 'English' : 'العربية' %>
+            </a>
+        </div>
+
+        <!-- 1. Authenticity Seal -->
+        <div class="nfc-verified-card">
+            <div class="nfc-pulse-circle">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 class="verified-title">
+                <span><%= lang === 'ar' ? 'أصالة معتمدة 100%' : '100% Certified Authentic' %></span>
+                <i class="fas fa-certificate"></i>
+            </h2>
+            <p class="verified-subtitle">
+                <%= lang === 'ar' ? 'تم التعرف على شريحة NFC المدمجة بالغطاء بنجاح' : 'NFC chip verified directly via AJMAN LUXURY cryptographic registry' %>
+            </p>
+            <div class="nfc-serial-badge">
+                <i class="fas fa-shield-halved"></i>
+                <span><%= serial %></span>
+            </div>
+        </div>
+
+        <!-- 2. Smart Bottle Stage -->
+        <div class="nfc-bottle-stage">
+            <div class="bottle-halo"></div>
+            <img src="<%= product.image %>?v=4.0" alt="<%= product.name %>" class="nfc-stage-img">
+            <div class="nfc-perfume-headline">
+                <h1 class="perfume-name-ar"><%= product.name %></h1>
+                <p class="perfume-name-en"><%= product.id.toUpperCase() %></p>
+                <p class="perfume-conc"><%= lang === 'ar' ? 'إكستريت دي بارفان نيش فاخر — ثبات يدوم أكثر من 48 ساعة' : 'Extrait De Parfum — 48H Exceptional Longevity' %></p>
+            </div>
+        </div>
+
+        <!-- 3. Smart Gift Message (If provided or sample) -->
+        <% if (giftMessage) { %>
+            <div class="nfc-gift-card">
+                <div class="gift-header">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <span><%= lang === 'ar' ? 'رسالة إهداء خاصة لك' : 'A Special Gift Message' %></span>
+                </div>
+                <div class="gift-body">
+                    "<%= giftMessage %>"
+                </div>
+                <% if (giftFrom) { %>
+                    <div class="gift-author">
+                        — <%= lang === 'ar' ? 'من:' : 'From:' %> <%= giftFrom %>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+
+        <!-- 4. Interactive Olfactory Notes -->
+        <div class="nfc-pyramid-card">
+            <div class="card-header-bar">
+                <i class="fas fa-sparkles"></i>
+                <span><%= lang === 'ar' ? 'الهرم العطري والمكونات النادرة' : 'Olfactory Fragrance Pyramid' %></span>
+            </div>
+
+            <div class="pyramid-tier">
+                <div class="tier-icon"><i class="fas fa-sun"></i></div>
+                <div class="tier-info">
+                    <strong><%= lang === 'ar' ? 'الافتتاحية (Top Notes)' : 'Top Notes' %></strong>
+                    <p><%= product.topNotes || (lang === 'ar' ? 'البرغموت الإيطالي، الزعفران الكشميري، نضارة الورد' : 'Italian Bergamot, Saffron, Rose') %></p>
+                </div>
+            </div>
+
+            <div class="pyramid-tier">
+                <div class="tier-icon"><i class="fas fa-heart"></i></div>
+                <div class="tier-info">
+                    <strong><%= lang === 'ar' ? 'قلب العطر (Heart Notes)' : 'Heart Notes' %></strong>
+                    <p><%= product.heartNotes || (lang === 'ar' ? 'الياسمين الملكي، أخشاب الأرز، نفحات توابل شرقية نادرة' : 'Royal Jasmine, Cedarwood, Rare Spices') %></p>
+                </div>
+            </div>
+
+            <div class="pyramid-tier">
+                <div class="tier-icon"><i class="fas fa-gem"></i></div>
+                <div class="tier-info">
+                    <strong><%= lang === 'ar' ? 'القاعدة والثبات (Base Notes)' : 'Base Notes' %></strong>
+                    <p><%= product.baseNotes || (lang === 'ar' ? 'العود الإماراتي العتيق، العنبر الملكي، المسك الحريري، الجلود الفاخرة' : 'Aged Oud, Royal Amber, White Musk, Soft Leather') %></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Perfumer's Application Guide -->
+        <div class="nfc-pyramid-card">
+            <div class="card-header-bar">
+                <i class="fas fa-spray-can-sparkles"></i>
+                <span><%= lang === 'ar' ? 'توجيهات خبير العطور لأفضل أداء' : 'Master Perfumer Guidelines' %></span>
+            </div>
+
+            <div class="nfc-tips-grid">
+                <div class="tip-item">
+                    <i class="fas fa-arrows-to-circle"></i>
+                    <strong><%= lang === 'ar' ? 'مناطق النبض' : 'Pulse Points' %></strong>
+                    <span><%= lang === 'ar' ? 'خلف الأذنين وجانبي الرقبة والمعصمين' : 'Neck sides and wrists' %></span>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-droplet"></i>
+                    <strong><%= lang === 'ar' ? 'عدد الرشات' : 'Sprays' %></strong>
+                    <span><%= lang === 'ar' ? '3 إلى 5 رشات تكفي لأكثر من 48 ساعة' : '3-5 sprays for 48h trail' %></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. One-Tap VIP Re-order -->
+        <a href="/checkout?lang=<%= lang %>" class="nfc-reorder-btn" data-add-to-cart 
+           data-product-id="<%= product.id %>" 
+           data-product-name="<%= product.name %>" 
+           data-product-price="<%= product.price %>" 
+           data-product-image="<%= product.image %>">
+            <i class="fas fa-rotate-right"></i>
+            <span><%= lang === 'ar' ? 'طلب زجاجة جديدة بخصم النخبة 15%' : 'VIP 15% Reorder' %></span>
+            <span class="reorder-vip-badge">VIP-NFC</span>
+        </a>
+
+        <!-- 7. VIP Concierge WhatsApp -->
+        <a href="https://wa.me/971561634196?text=<%= encodeURIComponent(lang === 'ar' ? `مرحباً عجمان لكجري، قمت بمسح شريحة NFC لعطر ${product.name} (السيريال: ${serial}) وأود استشارة خبير العطور.` : `Hello AJMAN LUXURY, I just scanned NFC for ${product.name} (${serial}) and would like to speak to a perfume specialist.`) %>" 
+           target="_blank" class="nfc-support-btn">
+            <i class="fab fa-whatsapp"></i>
+            <span><%= lang === 'ar' ? 'محادثة مستشار العطور الخاص' : 'Fragrance Concierge Chat' %></span>
+        </a>
+
+        <div class="nfc-footer-note">
+            AJMAN LUXURY Smart Fragrance Technology © 2026<br>
+            <%= lang === 'ar' ? 'الفخامة أو لا شيء' : 'Greatness or Nothing' %>
+        </div>
+    </div>
+
+    <script src="/js/main.js?v=4.0"></script>
+</body>
+</html>

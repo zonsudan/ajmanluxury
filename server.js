@@ -187,56 +187,21 @@ let translations = {
 
 let products = [
     {
-        id: 'council',
-        tone: 'noir',
-        image: '/images/products/council.jpeg',
-        name: { en: 'Council', ar: 'كاونسل' },
-        type: { en: 'Extrait de Parfum', ar: 'إكستريت دي بارفان' },
-        size: { en: '100 ml', ar: '100 مل' },
-        price: { en: 'AED 480', ar: '480 درهم' },
-        description: {
-            en: 'A dignified oud fragrance with warm spice, amber, and polished woods. Created for formal gatherings and confident presence.',
-            ar: 'عطر عود مهيب بنفحات التوابل الدافئة والعنبر والأخشاب المصقولة، صُمم للمجالس والحضور الواثق.'
-        },
-        topNotes: { en: 'Saffron, bergamot, black pepper', ar: 'زعفران، برغموت، فلفل أسود' },
-        heartNotes: { en: 'Oud, rose, incense', ar: 'عود، ورد، بخور' },
-        baseNotes: { en: 'Amber, leather, sandalwood', ar: 'عنبر، جلد، صندل' },
-        story: {
-            en: 'Council reflects the elegance of Emirati hospitality and the authority of a refined signature scent.',
-            ar: 'يعكس كاونسل أناقة الضيافة الإماراتية وهيبة العطر الذي يترك توقيعاً راقياً.'
-        }
-    },
-    {
-        id: 'first-lady',
-        tone: 'rose',
-        image: '/images/products/first-lady.jpeg',
-        name: { en: 'First Lady', ar: 'فيرست ليدي' },
-        type: { en: 'Extrait de Parfum', ar: 'إكستريت دي بارفان' },
-        size: { en: '100 ml', ar: '100 مل' },
-        price: { en: 'AED 450', ar: '450 درهم' },
-        description: {
-            en: 'A graceful floral amber perfume with rose, jasmine, vanilla, and soft musk for an elegant feminine trail.',
-            ar: 'عطر زهري عنبري راقٍ يجمع الورد والياسمين والفانيلا والمسك الناعم لبصمة أنثوية أنيقة.'
-        },
-        topNotes: { en: 'Pear, mandarin, pink pepper', ar: 'كمثرى، ماندرين، فلفل وردي' },
-        heartNotes: { en: 'Rose, jasmine, orange blossom', ar: 'ورد، ياسمين، زهر البرتقال' },
-        baseNotes: { en: 'Vanilla, musk, amber', ar: 'فانيلا، مسك، عنبر' },
-        story: {
-            en: 'First Lady celebrates soft power: graceful, polished, and memorable without being loud.',
-            ar: 'فيرست ليدي يحتفي بالقوة الناعمة: رقي ونعومة وحضور لا يُنسى دون مبالغة.'
-        }
-    },
-    {
         id: 'president',
         tone: 'royal',
-        image: '/images/products/president.jpeg',
+        image: '/images/products/president.png',
         name: { en: 'President', ar: 'بريزدنت' },
         type: { en: 'Extrait de Parfum', ar: 'إكستريت دي بارفان' },
         size: { en: '100 ml', ar: '100 مل' },
-        price: { en: 'AED 520', ar: '520 درهم' },
+        price: { en: 'AED 385', ar: '385 د.إ' },
+        originalPrice: { en: 'AED 550', ar: '550 د.إ' },
+        discount: '30%',
+        badge: { en: 'Best Seller', ar: 'الأكثر مبيعاً' },
+        rating: 5.0,
+        reviewsCount: 1420,
         description: {
             en: 'A bold amber woods fragrance with citrus brightness, aromatic herbs, and a deep smoky base.',
-            ar: 'عطر عنبري خشبي جريء يبدأ بانتعاش الحمضيات والأعشاب العطرية وينتهي بقاعدة دخانية عميقة.'
+            ar: 'عطر عنبري خشبي جريء يبدأ بانتعاش الحمضيات والأعشاب العطرية وينتهي بقاعدة دخانية عميقة تمنحك حضوراً استثنائياً.'
         },
         topNotes: { en: 'Grapefruit, cardamom, clary sage', ar: 'جريب فروت، هيل، مريمية' },
         heartNotes: { en: 'Cedarwood, lavender, patchouli', ar: 'خشب الأرز، لافندر، باتشولي' },
@@ -247,36 +212,46 @@ let products = [
         }
     },
     {
-        id: 'parliament',
-        tone: 'pearl',
-        image: '/images/products/parliament.jpeg',
-        name: { en: 'Parliament', ar: 'بارليامنت' },
+        id: 'first-lady',
+        tone: 'rose',
+        image: '/images/products/first-lady.png',
+        name: { en: 'First Lady', ar: 'فيرست ليدي' },
         type: { en: 'Extrait de Parfum', ar: 'إكستريت دي بارفان' },
         size: { en: '100 ml', ar: '100 مل' },
-        price: { en: 'AED 500', ar: '500 درهم' },
+        price: { en: 'AED 360', ar: '360 د.إ' },
+        originalPrice: { en: 'AED 490', ar: '490 د.إ' },
+        discount: '26%',
+        badge: { en: 'Top Rated', ar: 'الأعلى تقييماً' },
+        rating: 4.9,
+        reviewsCount: 980,
         description: {
-            en: 'A bright musky fragrance with white florals, clean woods, and a refined powdery finish.',
-            ar: 'عطر مسكي مشرق بنفحات الزهور البيضاء والأخشاب النظيفة ولمسة بودرية راقية.'
+            en: 'A graceful floral amber perfume with rose, jasmine, vanilla, and soft musk for an elegant feminine trail.',
+            ar: 'عطر زهري عنبري راقٍ يجمع الورد والياسمين والفانيلا والمسك الناعم لبصمة أنثوية ساحرة تدوم طويلاً.'
         },
-        topNotes: { en: 'Bergamot, neroli, white tea', ar: 'برغموت، نيرولي، شاي أبيض' },
-        heartNotes: { en: 'White rose, iris, jasmine', ar: 'ورد أبيض، آيرس، ياسمين' },
-        baseNotes: { en: 'Musk, cashmere woods, amber', ar: 'مسك، أخشاب كشمير، عنبر' },
+        topNotes: { en: 'Pear, mandarin, pink pepper', ar: 'كمثرى، ماندرين، فلفل وردي' },
+        heartNotes: { en: 'Rose, jasmine, orange blossom', ar: 'ورد، ياسمين، زهر البرتقال' },
+        baseNotes: { en: 'Vanilla, musk, amber', ar: 'فانيلا، مسك، عنبر' },
         story: {
-            en: 'Parliament is a polished scent for clean elegance and quiet authority.',
-            ar: 'بارليامنت عطر مصقول للأناقة النظيفة والحضور الهادئ الواثق.'
+            en: 'First Lady celebrates soft power: graceful, polished, and memorable without being loud.',
+            ar: 'فيرست ليدي يحتفي بالقوة الناعمة: رقي ونعومة وحضور لا يُنسى دون مبالغة.'
         }
     },
     {
         id: 'chairman',
         tone: 'sapphire',
-        image: '/images/products/chairman.jpeg',
+        image: '/images/products/chairman.png',
         name: { en: 'Chairman', ar: 'تشيرمان' },
         type: { en: 'Extrait de Parfum', ar: 'إكستريت دي بارفان' },
         size: { en: '100 ml', ar: '100 مل' },
-        price: { en: 'AED 540', ar: '540 درهم' },
+        price: { en: 'AED 395', ar: '395 د.إ' },
+        originalPrice: { en: 'AED 560', ar: '560 د.إ' },
+        discount: '29%',
+        badge: { en: 'Trending', ar: 'عطر الموسم' },
+        rating: 4.9,
+        reviewsCount: 1120,
         description: {
             en: 'A blue aromatic perfume with citrus, lavender, marine woods, and a confident amber base.',
-            ar: 'عطر أزرق عطري يجمع الحمضيات واللافندر والأخشاب البحرية مع قاعدة عنبرية واثقة.'
+            ar: 'عطر أزرق عطري يجمع الحمضيات واللافندر والأخشاب البحرية مع قاعدة عنبرية واثقة تفيض بالانتعاش والفخامة.'
         },
         topNotes: { en: 'Lemon, mint, grapefruit', ar: 'ليمون، نعناع، جريب فروت' },
         heartNotes: { en: 'Lavender, geranium, marine accord', ar: 'لافندر، جيرانيوم، نفحات بحرية' },
@@ -284,6 +259,56 @@ let products = [
         story: {
             en: 'Chairman is made for modern leadership: crisp, elegant, and memorable.',
             ar: 'تشيرمان صُمم لقيادة عصرية: منعش وأنيق ولا يُنسى.'
+        }
+    },
+    {
+        id: 'council',
+        tone: 'noir',
+        image: '/images/products/council.png',
+        name: { en: 'Council', ar: 'كاونسل' },
+        type: { en: 'Extrait de Parfum', ar: 'إكستريت دي بارفان' },
+        size: { en: '100 ml', ar: '100 مل' },
+        price: { en: 'AED 375', ar: '375 د.إ' },
+        originalPrice: { en: 'AED 520', ar: '520 د.إ' },
+        discount: '28%',
+        badge: { en: 'Royal Oud', ar: 'العود الملكي' },
+        rating: 5.0,
+        reviewsCount: 860,
+        description: {
+            en: 'A dignified oud fragrance with warm spice, amber, and polished woods. Created for formal gatherings and confident presence.',
+            ar: 'عطر عود مهيب بنفحات التوابل الدافئة والعنبر والأخشاب المصقولة، صُمم للمجالس والضيافة الإماراتية الأصيلة.'
+        },
+        topNotes: { en: 'Saffron, bergamot, black pepper', ar: 'زعفران، برغموت، فلفل أسود' },
+        heartNotes: { en: 'Oud, rose, incense', ar: 'عود، ورد، بخور' },
+        baseNotes: { en: 'Amber, leather, sandalwood', ar: 'عنبر، جلد، صندل' },
+        story: {
+            en: 'Council reflects the elegance of Emirati hospitality and the authority of a refined signature scent.',
+            ar: 'يعكس كاونسل أناقة الضيافة الإماراتية وهيبة العطر الذي يترك توقيعاً راقياً.'
+        }
+    },
+    {
+        id: 'parliament',
+        tone: 'pearl',
+        image: '/images/products/parliament.png',
+        name: { en: 'Parliament', ar: 'برلمان' },
+        type: { en: 'Extrait de Parfum', ar: 'إكستريت دي بارفان' },
+        size: { en: '100 ml', ar: '100 مل' },
+        price: { en: 'AED 365', ar: '365 د.إ' },
+        originalPrice: { en: 'AED 490', ar: '490 د.إ' },
+        discount: '25%',
+        badge: { en: 'Exclusive', ar: 'إصدار خاص' },
+        rating: 4.8,
+        reviewsCount: 740,
+        description: {
+            en: 'A bright musky fragrance with white florals, clean woods, and a refined powdery finish.',
+            ar: 'عطر مسكي مشرق بنفحات الزهور البيضاء والأخشاب النظيفة ولمسة بودرية راقية تجمع بين النقاء والفخامة.'
+        },
+        topNotes: { en: 'Bergamot, neroli, white tea', ar: 'برغموت، نيرولي، شاي أبيض' },
+        heartNotes: { en: 'White rose, iris, jasmine', ar: 'ورد أبيض، آيرس، ياسمين' },
+        baseNotes: { en: 'Musk, cashmere woods, amber', ar: 'مسك، أخشاب كشمير، عنبر' },
+        story: {
+            en: 'Parliament is a polished scent for clean elegance and quiet authority.',
+            ar: 'برلمان عطر مصقول للأناقة النظيفة والحضور الهادئ الواثق.'
         }
     }
 ];
@@ -1006,6 +1031,27 @@ app.get('/product/:id', (req, res) => {
             priceFils: priceToFils(product)
         }
     }));
+});
+
+// NFC Smart Perfume Tap Experience (Authenticity, Scent Notes, VIP Re-order)
+app.get(['/nfc/:id', '/experience/:id', '/verify/:id', '/nfc'], (req, res) => {
+    const productId = req.params.id || req.query.id || 'president';
+    const lang = req.lang || 'ar';
+    const product = products.find((item) => item.id.toLowerCase() === productId.toLowerCase()) || products[0];
+    const localizedProduct = localizeItem(product, lang);
+    const serial = req.query.serial || `AJM-${Math.floor(1000 + Math.random() * 9000)}-${product.id.substring(0,3).toUpperCase()}`;
+    const giftMessage = req.query.gift || '';
+    const giftFrom = req.query.from || '';
+
+    res.render('nfc-experience', {
+        ...pageData(req),
+        product: localizedProduct,
+        serial: serial,
+        giftMessage: giftMessage,
+        giftFrom: giftFrom,
+        lang: lang,
+        isRTL: lang === 'ar'
+    });
 });
 
 app.get('/gallery', renderPage('gallery', (lang) => ({

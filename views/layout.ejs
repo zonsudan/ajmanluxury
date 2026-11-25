@@ -3,140 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<%= t.siteName %> - <%= t.footerTagline %>">
-    <meta name="keywords" content="AJMAN LUXURY, luxury perfumes, oud, extrait de parfum, UAE perfume">
-    <title><%= t.siteName %></title>
-    <link rel="icon" href="<%= designSettings.faviconPath || '/favicon.png' %>">
-    <link rel="shortcut icon" href="<%= designSettings.faviconPath || '/favicon.png' %>">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="stylesheet" href="/css/style.css">
-    <style>
-        :root {
-            --ink: <%- designSettings.ink %>;
-            --gold: <%- designSettings.gold %>;
-            --paper: <%- designSettings.paper %>;
-            --mist: <%- designSettings.mist %>;
-            --card-radius: <%- designSettings.cardRadius %>;
-            --hero-logo-opacity: <%- designSettings.heroOpacity %>;
-            --site-font: <%- designSettings.fontFamily %>;
-        }
-    </style>
+    <meta name="description" content="<%= t.siteName %> — <%= lang === 'ar' ? 'الفخامة أو لا شيء | دار عطور نيش إماراتية فاخرة' : 'Greatness or Nothing | Luxury Niche Fragrance House' %>">
+    <title><%= t.siteName %> | <%= lang === 'ar' ? 'الفخامة أو لا شيء' : 'Greatness or Nothing' %></title>
+    
+    <link rel="icon" href="<%= designSettings.faviconPath || '/favicon.png' %>?v=3.8">
+    <link rel="shortcut icon" href="<%= designSettings.faviconPath || '/favicon.png' %>?v=3.8">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3.8">
+    
+    <!-- FontAwesome & Google Arabic Fonts (Tajawal like 3saf) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/style.css?v=4.1">
 </head>
-<body class="theme-<%= designSettings.themeMode || 'classic' %>">
-    <div class="top-offer-bar">
-        <span><%= lang === 'ar' ? 'عروض حصرية على عطور عجمان لكجري' : 'Exclusive offers on AJMAN LUXURY perfumes' %></span>
+<body class="theme-3saf">
+
+    <!-- 1. Top Minimal Email Bar (Exact 3saf Top Strip) -->
+    <div class="top-support-bar">
+        <div class="container-fluid top-bar-inner">
+            <div class="support-email">
+                <i class="far fa-envelope"></i>
+                <a href="mailto:support@ajman-luxury.com">support@ajman-luxury.com</a>
+            </div>
+            <div class="top-lang-link">
+                <a href="<%= currentPath %>?lang=<%= lang === 'ar' ? 'en' : 'ar' %>">
+                    <%= lang === 'ar' ? 'English' : 'العربية' %>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <header class="site-header">
-        <nav class="site-nav" aria-label="Primary navigation">
-            <a class="brand" href="/?lang=<%= lang %>" aria-label="<%= t.siteName %>">
-                <img src="/images/logo-wordmark.png" alt="<%= t.siteName %>" class="brand-wordmark">
-            </a>
-
-            <button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-expanded="false" aria-controls="mobile-mega-menu">
-                <span><%= lang === 'ar' ? 'القائمة' : 'Menu' %></span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4 7h16M4 12h16M4 17h16"/>
-                </svg>
-            </button>
-
-            <ul class="nav-links" id="mobile-mega-menu" data-mobile-mega-menu>
-                <li><a href="/?lang=<%= lang %>"><%= t.home %></a></li>
-                <li><a href="/products?lang=<%= lang %>"><%= t.products %></a></li>
-                <li><a href="/scent-finder?lang=<%= lang %>"><%= t.scentFinder %></a></li>
-                <li><a href="/about?lang=<%= lang %>"><%= t.about %></a></li>
-                <li><a href="/contact?lang=<%= lang %>"><%= t.contact %></a></li>
-            </ul>
-
-            <div class="header-tools">
-                <div class="lang-switch" aria-label="Language switcher">
-                    <a href="<%= currentPath %>?lang=en" class="<%= lang === 'en' ? 'active' : '' %>">EN</a>
-                    <a href="<%= currentPath %>?lang=ar" class="<%= lang === 'ar' ? 'active' : '' %>">عربي</a>
-                </div>
-                <div class="store-actions" aria-label="Store actions">
-                    <a href="/admin/login" class="admin-action" title="<%= lang === 'ar' ? 'لوحة التحكم' : 'Admin' %>" aria-label="<%= lang === 'ar' ? 'لوحة التحكم' : 'Admin' %>">
-                        <svg class="store-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 12a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Zm0 2c-4.2 0-7.6 2.5-7.6 5.5 0 .8.6 1.5 1.5 1.5h12.2c.9 0 1.5-.7 1.5-1.5 0-3-3.4-5.5-7.6-5.5Z"/>
-                        </svg>
-                    </a>
-                    <a href="/contact?lang=<%= lang %>" class="support-action" title="<%= lang === 'ar' ? 'الدعم' : 'Support' %>" aria-label="<%= lang === 'ar' ? 'الدعم' : 'Support' %>">
-                        <svg class="store-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 3.5a8.5 8.5 0 0 0-8.5 8.5v3.1A2.9 2.9 0 0 0 6.4 18H8a1 1 0 0 0 1-1v-4.2a1 1 0 0 0-1-1H5.6A6.4 6.4 0 0 1 12 5.5a6.4 6.4 0 0 1 6.4 6.3H16a1 1 0 0 0-1 1V17a1 1 0 0 0 1 1h1.8a4.4 4.4 0 0 1-4.1 2.5H12a1 1 0 1 0 0 2h1.7a6.4 6.4 0 0 0 6.4-6.4V12A8.5 8.5 0 0 0 12 3.5Z"/>
-                        </svg>
-                    </a>
-                    <a href="/checkout?lang=<%= lang %>" class="bag-link" title="<%= lang === 'ar' ? 'سلة المشتريات' : 'Shopping cart' %>" aria-label="<%= lang === 'ar' ? 'سلة المشتريات' : 'Shopping cart' %>">
-                        <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M7 18.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM4.2 4l2.1 10.2A2.2 2.2 0 0 0 8.5 16h7.8a2.2 2.2 0 0 0 2.1-1.6l1.5-5.6A1.4 1.4 0 0 0 18.6 7H7.1L6.6 4.6A2 2 0 0 0 4.7 3H3a1 1 0 1 0 0 2h1.2Zm3.3 5h10.1l-1.2 4.8a.3.3 0 0 1-.3.2H8.5a.3.3 0 0 1-.3-.2L7.5 9Z"/>
-                        </svg>
-                        <span class="cart-label"><%= lang === 'ar' ? 'السلة' : 'Cart' %></span>
-                        <span class="cart-count" data-cart-count>0</span>
-                    </a>
-                </div>
+    <!-- 2. Transparent Floating Header (Tailored Exclusively to the 5 Perfumes) -->
+    <header class="site-header-3saf" id="siteHeader">
+        <div class="container-fluid header-inner">
+            <!-- Right: Brand Logo -->
+            <div class="header-right-col">
+                <a href="/?lang=<%= lang %>" class="brand-logo-link" aria-label="<%= t.siteName %>">
+                    <img src="/images/logo-transparent.png?v=3.9" alt="<%= t.siteName %>" class="brand-logo-img">
+                </a>
             </div>
-        </nav>
+
+            <!-- Center: Navigation Menu for the 5 Signature Perfumes Only -->
+            <nav class="header-center-nav">
+                <ul class="nav-links-list">
+                    <li><a href="/?lang=<%= lang %>" class="active"><%= lang === 'ar' ? 'الرئيسية' : 'Home' %></a></li>
+                    <li><a href="#featured-collection"><%= lang === 'ar' ? 'العطور الخاصة' : 'Signature Scents' %></a></li>
+                    <li><a href="#product-president"><%= lang === 'ar' ? 'بريزدنت' : 'President' %></a></li>
+                    <li><a href="#product-first-lady"><%= lang === 'ar' ? 'فيرست ليدي' : 'First Lady' %></a></li>
+                    <li><a href="#product-chairman"><%= lang === 'ar' ? 'تشيرمان' : 'Chairman' %></a></li>
+                    <li><a href="#product-council"><%= lang === 'ar' ? 'كاونسل' : 'Council' %></a></li>
+                    <li><a href="#product-parliament"><%= lang === 'ar' ? 'برلمان' : 'Parliament' %></a></li>
+                    <li><a href="#nfc-smart-fragrance" class="nav-nfc-link"><i class="fa-solid fa-wifi fa-rotate-90"></i> <%= lang === 'ar' ? 'تقنية NFC' : 'Smart NFC' %></a></li>
+                    <li class="special-offer-nav"><a href="#featured-collection"><%= lang === 'ar' ? 'عروض عجمان الحصرية' : 'Exclusive Offers' %></a></li>
+                </ul>
+            </nav>
+
+            <!-- Left: Search, User, and Cart with Red Badge -->
+            <div class="header-left-col">
+                <button type="button" class="tool-icon-btn" id="searchTriggerBtn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="/admin/login" class="tool-icon-btn" aria-label="Account">
+                    <i class="far fa-user"></i>
+                </a>
+                <button type="button" class="tool-icon-btn cart-btn-wrap" id="cartToggleBtn" aria-label="Cart">
+                    <i class="fas fa-bag-shopping"></i>
+                    <span class="red-cart-badge" data-cart-count>0</span>
+                </button>
+
+                <!-- Mobile Menu Trigger -->
+                <button type="button" class="mobile-nav-toggle" id="mobileMenuBtn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Bar Overlay -->
+        <div class="search-drop-bar" id="searchDropBar">
+            <div class="container search-bar-inner">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="<%= lang === 'ar' ? 'ابحث عن عطرك المفضل (بريزدنت، فيرست ليدي، تشيرمان، كاونسل، برلمان)...' : 'Search perfumes (President, First Lady, Chairman, Council, Parliament)...' %>">
+                <button type="button" class="close-search-btn" id="closeSearchBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
     </header>
 
-    <main>
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay">
+        <div class="mobile-drawer">
+            <div class="drawer-header">
+                <img src="/images/logo-wordmark.png" alt="<%= t.siteName %>" class="drawer-logo">
+                <button class="close-drawer-btn" id="closeDrawerBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <ul class="drawer-nav">
+                <li><a href="/?lang=<%= lang %>"><i class="fas fa-home"></i> <%= lang === 'ar' ? 'الرئيسية' : 'Home' %></a></li>
+                <li><a href="#featured-collection"><i class="fas fa-spray-can"></i> <%= lang === 'ar' ? 'العطور الخاصة (الـ 5 أصناف)' : 'All 5 Perfumes' %></a></li>
+                <li><a href="#product-president"><i class="fas fa-crown"></i> President — <%= lang === 'ar' ? 'بريزدنت' : 'President' %></a></li>
+                <li><a href="#product-first-lady"><i class="fas fa-heart"></i> First Lady — <%= lang === 'ar' ? 'فيرست ليدي' : 'First Lady' %></a></li>
+                <li><a href="#product-chairman"><i class="fas fa-compass"></i> Chairman — <%= lang === 'ar' ? 'تشيرمان' : 'Chairman' %></a></li>
+                <li><a href="#product-council"><i class="fas fa-tree"></i> Council — <%= lang === 'ar' ? 'كاونسل' : 'Council' %></a></li>
+                <li><a href="#product-parliament"><i class="fas fa-gem"></i> Parliament — <%= lang === 'ar' ? 'برلمان' : 'Parliament' %></a></li>
+                <li><a href="#nfc-smart-fragrance"><i class="fa-solid fa-wifi fa-rotate-90" style="color: #d4af37;"></i> <%= lang === 'ar' ? 'الفخامة الذكية وتقنية NFC' : 'Smart NFC Experience' %></a></li>
+                <li><a href="#golden-guarantee"><i class="fas fa-shield-halved"></i> <%= lang === 'ar' ? 'الضمان الذهبي للتجربة' : 'Golden Guarantee' %></a></li>
+                <li><a href="/admin/login"><i class="fas fa-lock"></i> <%= lang === 'ar' ? 'لوحة التحكم' : 'Admin Area' %></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main View Content Injection -->
+    <main class="main-site-content">
         <%- body %>
     </main>
 
+    <!-- Slide-Out Shopping Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cartOverlay">
+        <div class="cart-drawer-panel">
+            <div class="cart-drawer-header">
+                <div class="cart-title">
+                    <i class="fas fa-bag-shopping"></i>
+                    <span><%= lang === 'ar' ? 'سلة المشتريات' : 'Shopping Cart' %></span>
+                    (<span id="cartHeaderCount">0</span>)
+                </div>
+                <button class="close-cart-btn" id="closeCartBtn"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="cart-free-shipping-progress">
+                <div class="progress-text">
+                    <i class="fas fa-truck-fast"></i>
+                    <span><%= lang === 'ar' ? 'شحن مجاني لكافة طلبات دول الخليج' : 'Free Express GCC Shipping' %></span>
+                </div>
+                <div class="progress-bar-wrap">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <div class="cart-drawer-items" id="cartItemsContainer">
+                <!-- Dynamically rendered -->
+            </div>
+
+            <div class="cart-drawer-footer">
+                <div class="subtotal-row">
+                    <span><%= lang === 'ar' ? 'المجموع الفرعي:' : 'Subtotal:' %></span>
+                    <strong class="subtotal-amount" id="cartDrawerSubtotal">0 د.إ</strong>
+                </div>
+                
+                <div class="cart-bnpl-notice">
+                    <span><%= lang === 'ar' ? 'أو قسّمها على 4 دفعات بدون فوائد مع' : 'Or 4 interest-free payments with' %></span>
+                    <div class="bnpl-badges">
+                        <span class="badge-tabby">Tabby</span>
+                        <span class="badge-tamara">Tamara</span>
+                    </div>
+                </div>
+
+                <a href="/checkout?lang=<%= lang %>" class="checkout-submit-btn">
+                    <span><%= lang === 'ar' ? 'إتمام الطلب الفوري' : 'Proceed to Checkout' %></span>
+                    <i class="fas fa-arrow-left checkout-arrow"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Mobile Bottom Bar -->
+    <div class="mobile-bottom-bar">
+        <a href="/?lang=<%= lang %>" class="bottom-bar-item active">
+            <i class="fas fa-home"></i>
+            <span><%= lang === 'ar' ? 'الرئيسية' : 'Home' %></span>
+        </a>
+        <a href="#featured-collection" class="bottom-bar-item">
+            <i class="fas fa-spray-can"></i>
+            <span><%= lang === 'ar' ? 'العطور' : 'Shop' %></span>
+        </a>
+        <button type="button" class="bottom-bar-item" id="mobileBottomCartBtn">
+            <div class="cart-icon-rel">
+                <i class="fas fa-bag-shopping"></i>
+                <span class="cart-badge-dot" data-cart-count>0</span>
+            </div>
+            <span><%= lang === 'ar' ? 'السلة' : 'Cart' %></span>
+        </button>
+        <a href="https://wa.me/<%= designSettings.whatsappNumber || '971561634196' %>" target="_blank" rel="noopener" class="bottom-bar-item whatsapp-item">
+            <i class="fab fa-whatsapp"></i>
+            <span><%= lang === 'ar' ? 'واتساب' : 'WhatsApp' %></span>
+        </a>
+    </div>
+
+    <!-- Floating Scroll-To-Top Arrow -->
+    <button type="button" class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Official 3saf Style Footer -->
     <footer class="site-footer">
-        <div class="container footer-inner">
-            <img src="/images/logo-wordmark.png" alt="<%= t.siteName %>" class="footer-logo">
-            <p>&copy; 2026 <%= t.siteName %>. <%= t.footerTagline %>.</p>
-            <div class="footer-links">
-                <a href="/gallery?lang=<%= lang %>"><%= t.gallery %></a>
-                <a href="/blog?lang=<%= lang %>"><%= t.blog %></a>
-                <a href="/testimonials?lang=<%= lang %>"><%= t.testimonials %></a>
+        <div class="footer-features-strip">
+            <div class="container features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-truck-fast"></i>
+                    <div>
+                        <strong><%= lang === 'ar' ? 'شحن سريع ومجاني' : 'Express Free Shipping' %></strong>
+                        <p><%= lang === 'ar' ? 'توصيل لباب المنزل في جميع دول الخليج' : 'Fast doorstep delivery' %></p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-halved"></i>
+                    <div>
+                        <strong><%= lang === 'ar' ? 'الضمان الذهبي' : 'Golden Guarantee' %></strong>
+                        <p><%= lang === 'ar' ? 'عينة تجربة مجانية واسترجاع بدون تعقيد' : 'Free trial sample & easy return' %></p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <strong><%= lang === 'ar' ? 'عطور أصلية 100%' : '100% Authentic Extrait' %></strong>
+                        <p><%= lang === 'ar' ? 'ثبات وفوحان يدوم لأكثر من 48 ساعة' : 'Exceptional 48h longevity' %></p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-credit-card"></i>
+                    <div>
+                        <strong><%= lang === 'ar' ? 'تقسيط تابي وتمارا' : 'Flexible Installments' %></strong>
+                        <p><%= lang === 'ar' ? 'قسّم فاتورتك على 4 دفعات بدون فوائد' : 'Split with Tabby & Tamara' %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-main-content">
+            <div class="footer-col brand-col">
+                <img src="/images/logo-wordmark.png" alt="<%= t.siteName %>" class="footer-brand-logo">
+                <p class="brand-motto"><%= lang === 'ar' ? 'عجمان لكجري — الفخامة أو لا شيء. دار عطور إكستريت دي بارفان تترجم نبالة الصقر الإماراتي والنوتات النادرة إلى حضور استثنائي.' : 'AJMAN LUXURY — Greatness or Nothing.' %></p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="col-title"><%= lang === 'ar' ? 'العطور الخاصة (الـ 5 أصناف)' : 'Signature Scents' %></h4>
+                <ul class="col-links">
+                    <li><a href="#product-president">President — <%= lang === 'ar' ? 'بريزدنت' : 'President' %></a></li>
+                    <li><a href="#product-first-lady">First Lady — <%= lang === 'ar' ? 'فيرست ليدي' : 'First Lady' %></a></li>
+                    <li><a href="#product-chairman">Chairman — <%= lang === 'ar' ? 'تشيرمان' : 'Chairman' %></a></li>
+                    <li><a href="#product-council">Council — <%= lang === 'ar' ? 'كاونسل' : 'Council' %></a></li>
+                    <li><a href="#product-parliament">Parliament — <%= lang === 'ar' ? 'برلمان' : 'Parliament' %></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col compliance-col">
+                <h4 class="col-title"><%= lang === 'ar' ? 'الرخص والدفع' : 'Compliance & Pay' %></h4>
+                <p class="cr-text"><%= lang === 'ar' ? 'رقم السجل التجاري: 1010729481' : 'CR: 1010729481' %></p>
+                <p class="cr-text"><%= lang === 'ar' ? 'الرقم الضريبي: 310592817400003' : 'Tax ID: 310592817400003' %></p>
+                
+                <div class="payment-badges-grid">
+                    <span class="pay-tag mada">مدى</span>
+                    <span class="pay-tag apple">Apple Pay</span>
+                    <span class="pay-tag visa">VISA</span>
+                    <span class="pay-tag mc">Mastercard</span>
+                    <span class="pay-tag tabby">Tabby</span>
+                    <span class="pay-tag tamara">Tamara</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom-copyright">
+            <div class="container copy-inner">
+                <span><%= lang === 'ar' ? 'جميع الحقوق محفوظة © 2026 عجمان لكجري (AJMAN LUXURY)' : 'All Rights Reserved © 2026 AJMAN LUXURY' %></span>
+                <span class="motto-tag"><%= lang === 'ar' ? 'الفخامة أو لا شيء' : 'Greatness or Nothing' %></span>
             </div>
         </div>
     </footer>
 
-    <div class="whatsapp-widget" data-whatsapp-widget data-lang="<%= lang %>">
-        <section class="whatsapp-panel" data-whatsapp-panel hidden aria-label="<%= lang === 'ar' ? 'دردشة خدمة العملاء' : 'Customer care chat' %>">
-            <div class="whatsapp-panel-header">
-                <div>
-                    <strong><%= lang === 'ar' ? 'عجمان لكجري' : 'AJMAN LUXURY' %></strong>
-                    <span><%= lang === 'ar' ? 'خدمة العملاء عبر واتساب' : 'WhatsApp customer care' %></span>
-                </div>
-                <button type="button" data-whatsapp-close aria-label="<%= lang === 'ar' ? 'إغلاق' : 'Close' %>">×</button>
-            </div>
-            <div class="whatsapp-panel-body" data-whatsapp-messages>
-                <div class="chat-bubble support">
-                    <%= lang === 'ar' ? 'مرحباً بك 👋 كيف يمكننا مساعدتك في اختيار العطر أو إتمام الطلب؟' : 'Hello 👋 How can we help you choose a perfume or complete your order?' %>
-                </div>
-            </div>
-            <form class="whatsapp-form" data-whatsapp-form>
-                <strong class="live-chat-title"><%= lang === 'ar' ? 'لايف شات داخلي' : 'Internal Live Chat' %></strong>
-                <input name="name" placeholder="<%= lang === 'ar' ? 'اسمك' : 'Your name' %>">
-                <input name="phone" placeholder="<%= lang === 'ar' ? 'رقم الهاتف' : 'Phone number' %>">
-                <textarea name="message" rows="3" required placeholder="<%= lang === 'ar' ? 'اكتب استفسارك هنا...' : 'Write your question here...' %>"></textarea>
-                <button type="submit"><%= lang === 'ar' ? 'إرسال' : 'Send' %></button>
-                <small data-whatsapp-status></small>
-            </form>
-        </section>
-        <div class="chat-launchers">
-            <a class="whatsapp-chat whatsapp-external-chat" href="<%= whatsappUrl %>" target="_blank" rel="noopener" aria-label="<%= lang === 'ar' ? 'فتح واتساب خارجي' : 'Open external WhatsApp chat' %>">
-                <span class="whatsapp-icon" aria-hidden="true">
-                    <svg class="whatsapp-logo" viewBox="0 0 32 32">
-                        <path d="M16.01 3.2c-7.03 0-12.75 5.62-12.75 12.54 0 2.21.59 4.37 1.71 6.27L3.15 28.8l6.99-1.78a12.91 12.91 0 0 0 5.87 1.43c7.03 0 12.75-5.62 12.75-12.54S23.04 3.2 16.01 3.2Zm0 23.1c-1.84 0-3.65-.47-5.24-1.36l-.38-.21-4.15 1.06 1.1-4.01-.25-.41a10.33 10.33 0 0 1-1.61-5.63c0-5.73 4.72-10.4 10.53-10.4s10.53 4.67 10.53 10.4-4.72 10.56-10.53 10.56Zm5.78-7.77c-.32-.16-1.88-.92-2.17-1.02-.29-.11-.5-.16-.71.16-.21.31-.82 1.02-1 1.23-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.56-.94-.83-1.58-1.86-1.77-2.17-.18-.31-.02-.48.14-.64.14-.14.32-.37.47-.55.16-.18.21-.31.32-.52.11-.21.05-.39-.03-.55-.08-.16-.71-1.69-.97-2.31-.26-.61-.52-.52-.71-.53h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.07-1.1 2.6s1.13 3.02 1.29 3.23c.16.21 2.22 3.35 5.38 4.69.75.32 1.34.51 1.8.65.76.24 1.45.21 1.99.13.61-.09 1.88-.76 2.15-1.49.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.61-.37Z"/>
-                    </svg>
-                </span>
-                <span class="whatsapp-copy">
-                    <strong><%= lang === 'ar' ? 'واتساب' : 'WhatsApp' %></strong>
-                    <small><%= lang === 'ar' ? 'دردشة خارجية' : 'External chat' %></small>
-                </span>
-            </a>
-            <button class="whatsapp-chat live-chat-launcher" type="button" data-whatsapp-toggle aria-label="<%= lang === 'ar' ? 'فتح لايف شات داخلي' : 'Open internal live chat' %>">
-                <span class="whatsapp-icon">💬</span>
-                <span class="whatsapp-copy">
-                    <strong><%= lang === 'ar' ? 'لايف شات' : 'Live Chat' %></strong>
-                    <small><%= lang === 'ar' ? 'داخل الموقع' : 'Inside site' %></small>
-                </span>
-            </button>
-        </div>
-    </div>
-
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js?v=3.8"></script>
 </body>
 </html>
