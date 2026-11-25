@@ -196,6 +196,14 @@ function initCartDrawer() {
         });
     }
 
+    const waCheckoutBtn = document.getElementById('cartWhatsappCheckoutBtn');
+    if (waCheckoutBtn) {
+        waCheckoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            sendCartToWhatsApp();
+        });
+    }
+
     updateCartUI();
 }
 
@@ -252,3 +260,145 @@ function initScrollToTop() {
         });
     });
 }
+
+
+/* 7. WhatsApp Direct Checkout Engine */
+const WA_PHONE = '971561634196';
+
+function sendCartToWhatsApp() {
+    const cart = readCart();
+    const isAr = document.documentElement.lang !== 'en';
+    
+    if (!cart || cart.length === 0) {
+        alert(isAr ? 'سلة المشتريات فارغة، يرجى اختيار عطر أولاً.' : 'Your bag is empty, please choose a perfume first.');
+        return;
+    }
+
+    let total = 0;
+    let itemsText = '';
+
+    cart.forEach((item) => {
+        const qty = item.quantity || 1;
+        const priceNum = parseInt(String(item.price).replace(/[^0-9]/g, '')) || 380;
+        const itemTotal = priceNum * qty;
+        total += itemTotal;
+        
+        if (isAr) {
+            itemsText += `• ${item.name} (${item.size || '100 مل'})
+  الكمية: ${qty} × ${priceNum} = ${itemTotal} د.إ
+
+`;
+        } else {
+            itemsText += `• ${item.name} (${item.size || '100ml'})
+  Qty: ${qty} x ${priceNum} = ${itemTotal} AED
+
+`;
+        }
+    });
+
+    let msg = '';
+    if (isAr) {
+        msg = `🦅 *طلب جديد — متجر عجمان لكجري*
+` +
+              `━━━━━━━━━━━━━━━━━━━━
+` +
+              `📌 *تفاصيل العطور المختارة:*
+
+` +
+              itemsText +
+              `━━━━━━━━━━━━━━━━━━━━
+` +
+              `💰 *المجموع النهائي:* ${total} درهم إماراتي
+` +
+              `🚚 *الشحن:* مجاني وسريع لكافة دول الخليج
+` +
+              `🛡️ *الضمان:* الضمان الذهبي مع عينة تجربة مجانية
+` +
+              `━━━━━━━━━━━━━━━━━━━━
+` +
+              `يرجى تأكيد استلام الطلب لتزويدكم بالاسم وعنوان التوصيل.`;
+    } else {
+        msg = `🦅 *New Order — AJMAN LUXURY*
+` +
+              `━━━━━━━━━━━━━━━━━━━━
+` +
+              `📌 *Order Items:*
+
+` +
+              itemsText +
+              `━━━━━━━━━━━━━━━━━━━━
+` +
+              `💰 *Total Amount:* ${total} AED
+` +
+              `🚚 *Shipping:* Complimentary Express Delivery
+` +
+              `🛡️ *Guarantee:* Golden Trial Sample Guarantee
+` +
+              `━━━━━━━━━━━━━━━━━━━━
+` +
+              `Please confirm my order to provide delivery details.`;
+    }
+
+    const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, '_blank');
+}
+
+/* 8. Checkout Page Form Submission to WhatsApp */
+document.addEventListener('DOMContentLoaded', () => {
+    const checkoutForm = document.querySelector('[data-checkout-form]');
+    if (!checkoutForm) return;
+
+    checkoutForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(checkoutForm);
+        const name = formData.get('name') || '';
+        const phone = formData.get('phone') || '';
+        const email = formData.get('email') || '';
+        const address = formData.get('address') || '';
+        
+        const cart = readCart();
+        const isAr = document.documentElement.lang !== 'en';
+        let total = 0;
+        let itemsText = '';
+
+        cart.forEach((item) => {
+            const qty = item.quantity || 1;
+            const priceNum = parseInt(String(item.price).replace(/[^0-9]/g, '')) || 380;
+            const itemTotal = priceNum * qty;
+            total += itemTotal;
+            itemsText += `• ${item.name} (${item.size || '100 مل'}) × ${qty} = ${itemTotal} د.إ
+`;
+        });
+
+        const msg = `🦅 *طلب شراء فوري — متجر عجمان لكجري*
+` +
+                    `━━━━━━━━━━━━━━━━━━━━
+` +
+                    `👤 *بيانات العميل والتوصيل:*
+` +
+                    `• الاسم: ${name}
+` +
+                    `• الهاتف: ${phone}
+` +
+                    `• العنوان: ${address}
+` +
+                    (email ? `• البريد: ${email}
+` : '') +
+                    `━━━━━━━━━━━━━━━━━━━━
+` +
+                    `📌 *العطور المطلوبة:*
+` +
+                    (itemsText || '• طلب مخصص
+') +
+                    `━━━━━━━━━━━━━━━━━━━━
+` +
+                    `💰 *المجموع:* ${total || 'حسب الفاتورة'} درهم (شامل الشحن والضريبة)
+` +
+                    `━━━━━━━━━━━━━━━━━━━━
+` +
+                    `تم إرسال الطلب عبر المتجر، بانتظار التأكيد وموعد التوصيل.`;
+
+        const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
+        window.open(waUrl, '_blank');
+    });
+});

@@ -54,8 +54,13 @@
                 </div>
             </div>
 
-            <!-- Action Add to Bag -->
+            <!-- Action WhatsApp Direct & Add to Bag -->
             <div class="detail-actions-area">
+                <a href="https://wa.me/971561634196?text=${encodeURIComponent(lang === 'ar' ? `مرحباً عجمان لكجري 🦅\nأود طلب عطر: ${product.name}\nالحجم: ${product.size || '100 مل'}\nالسعر: ${product.price}\n(شامل الضريبة والشحن السريع المجاني)\nيرجى تأكيد الطلب لتزويدكم بعنوان التوصيل.` : `Hello AJMAN LUXURY 🦅\nI would like to order: ${product.name}\nSize: ${product.size || '100ml'}\nPrice: ${product.price}\n(Free express delivery included)\nPlease confirm my order.`)}" 
+                   target="_blank" class="btn-whatsapp-direct detail-wa-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>${lang === 'ar' ? 'طلب فوري عبر واتساب مباشرةً' : 'Order Directly via WhatsApp'}</span>
+                </a>
                 <button type="button" class="btn-add-to-cart detail-add-btn" data-add-to-cart 
                         data-product-id="${product.id}" 
                         data-product-name="${product.name}" 
